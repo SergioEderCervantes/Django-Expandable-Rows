@@ -1,0 +1,121 @@
+/* ── Variables (Unfold con fallback neutro) ──────────────────────────────── */
+:root {
+  --er-accent: var(--color-primary-600, #6366f1);
+  --er-soft:   rgba(0, 0, 0, 0.03);
+  --er-border: var(--color-base-200, #e5e7eb);
+}
+
+/* ── Botón expand en la columna ──────────────────────────────────────────── */
+.er-expand-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  color: var(--er-accent);
+  opacity: .5;
+  transition: opacity .2s ease;
+  line-height: 1;
+}
+.er-expand-btn:hover {
+  opacity: 1;
+}
+.er-expand-btn .material-symbols-outlined {
+  font-size: 24px;
+  display: block;
+  transition: transform .2s ease;
+}
+
+/* ── Fila de detalle ─────────────────────────────────────────────────────── */
+.er-detail-row > td {
+  padding: 0 !important;
+  border-top: none !important;
+}
+.er-detail-inner {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .28s ease;
+}
+.er-detail-row.er-detail--open .er-detail-inner {
+  max-height: 500px;
+}
+
+/* ── Cards de contenido ──────────────────────────────────────────────────── */
+.er-cards {
+  display: flex;
+  gap: 14px;
+  padding: 14px 20px 18px;
+  flex-wrap: wrap;
+}
+.er-card {
+  flex: 1;
+  min-width: 200px;
+  background: var(--er-soft);
+  border: 1px solid var(--er-border);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.er-card__title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--er-accent);
+  margin-bottom: 10px;
+}
+.er-card__title .material-symbols-outlined {
+  font-size: 14px;
+}
+.er-field {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--er-border);
+  font-size: 12px;
+}
+.er-field:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.er-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  opacity: .5;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+.er-value {
+  font-weight: 500;
+}
+
+/* ── Link value ──────────────────────────────────────────────────────────── */
+.er-link {
+  color: var(--er-accent);
+  text-decoration: none;
+}
+.er-link:hover {
+  text-decoration: underline;
+}
+
+/* ── Button link ─────────────────────────────────────────────────────────── */
+.er-btn-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  color: var(--er-accent);
+  opacity: .6;
+  transition: opacity .2s ease;
+  text-decoration: none;
+}
+.er-btn-link:hover {
+  opacity: 1;
+}
+.er-btn-link .material-symbols-outlined {
+  font-size: 15px;
+}
