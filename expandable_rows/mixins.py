@@ -3,7 +3,7 @@ import json
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
-from app.expandable_rows.fields import ErCard
+from .fields import ErCard
 
 
 class ExpandableRowMixin:

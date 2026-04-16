@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "django-expandable-rows"
+version = "0.1.0"
+description = "Expandable rows for Django admin list views"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = ["django>=4.0"]
+
+[project.urls]
+Repository = "https://github.com/SergioEderCR/Django-Expandable-Rows"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["expandable_rows*"]
+
+[tool.setuptools.package-data]
+expandable_rows = ["static/**/*"]
