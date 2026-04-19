@@ -1,32 +1,23 @@
 # django-expandable-rows
 
-Filas expandibles para Django admin list views. Compatible con Unfold.
+Filas expandibles para Django admin list views. Compatible con Django vanilla y Unfold.
 
 ## Instalación
 
-1. Copia la carpeta `expandable_rows/` a tu proyecto.
+```bash
+pip install django-expandable-rows
+```
 
-2. Añade a `INSTALLED_APPS` en `settings.py`:
-   ```python
-   INSTALLED_APPS = [
-       ...
-       "expandable_rows",  # ajusta el path según tu estructura
-   ]
-   ```
-   > Si tu proyecto usa estructura de paquete tipo `app/`, cambia el `name` en `apps.py` al path correcto (e.g. `"myapp.expandable_rows"`).
+Añade a `INSTALLED_APPS` en `settings.py`:
 
-3. Crea `templates/admin/base_site.html` en tu proyecto:
-   ```html
-   {% extends "admin/base.html" %}
-   {% load static %}
+```python
+INSTALLED_APPS = [
+    ...
+    "expandable_rows",
+]
+```
 
-   {% block extrastyle %}
-   {{ block.super }}
-   <link rel="stylesheet" href="{% static 'expandable_rows/expandable_rows.css' %}">
-   <script src="{% static 'expandable_rows/expandable_rows.js' %}"></script>
-   {% endblock %}
-   ```
-   > Si usas Unfold, añade también los bloques `title`, `branding` y `nav-global` que Unfold necesita (ver nota al final).
+No se requiere ninguna configuración de templates.
 
 ---
 
@@ -117,29 +108,8 @@ Si `is_button=True`, `href` es obligatorio.
 ErCard(title="Título", icon="person", fields=[...])
 ```
 
-| Parámetro | Tipo          | Default | Descripción                              |
-|-----------|---------------|---------|------------------------------------------|
-| `title`   | `str`         | —       | Título de la card (requerido)            |
-| `fields`  | `list[ErField]` | `[]`  | Lista de campos                          |
-| `icon`    | `str`         | `''`    | Material Symbol para el título (opcional)|
-
----
-
-## Nota para proyectos con Unfold
-
-El `base_site.html` debe replicar lo que Unfold ya hace, más tus assets:
-
-```html
-{% extends "admin/base.html" %}
-{% load i18n static %}
-
-{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
-{% block branding %}{% include "unfold/helpers/site_branding.html" %}{% endblock %}
-{% block nav-global %}{% endblock %}
-
-{% block extrastyle %}
-{{ block.super }}
-<link rel="stylesheet" href="{% static 'expandable_rows/expandable_rows.css' %}">
-<script src="{% static 'expandable_rows/expandable_rows.js' %}"></script>
-{% endblock %}
-```
+| Parámetro | Tipo            | Default | Descripción                               |
+|-----------|-----------------|---------|-------------------------------------------|
+| `title`   | `str`           | —       | Título de la card (requerido)             |
+| `fields`  | `list[ErField]` | `[]`    | Lista de campos                           |
+| `icon`    | `str`           | `''`    | Material Symbol para el título (opcional) |

@@ -7,6 +7,11 @@ from .fields import ErCard
 
 
 class ExpandableRowMixin:
+
+    class Media:
+        css = {"all": ("expandable_rows/expandable_rows.css",)}
+        js = ("expandable_rows/expandable_rows.js",)
+
     """
     Añade filas expandibles al Django admin list view.
 
