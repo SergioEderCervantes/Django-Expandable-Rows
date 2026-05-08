@@ -56,6 +56,21 @@ class ProductoAdmin(ExpandableRowMixin, ModelAdmin):
 - `expand_detail` se añade **al final** de `list_display`.
 - `expandable_row_cards` retorna una lista de `ErCard`.
 
+### Opciones del Mixin
+
+| Atributo         | Tipo   | Default | Descripción                                                                 |
+|------------------|--------|---------|-----------------------------------------------------------------------------|
+| `expand_on_click` | `bool` | `False` | Si es `True`, hacer clic en cualquier parte de la fila expande el detalle   |
+
+```python
+class ProductoAdmin(ExpandableRowMixin, ModelAdmin):
+    expand_on_click = True  # toda la fila actúa como trigger
+    list_display = ["nombre", "precio", "expand_detail"]
+    ...
+```
+
+El chevron conserva su animación independientemente del valor de `expand_on_click`.
+
 ---
 
 ## ErField — tipos de campo

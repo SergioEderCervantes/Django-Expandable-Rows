@@ -27,6 +27,14 @@
   transition: transform .2s ease;
 }
 
+/* ── Fila clickeable (expand_on_click) ───────────────────────────────────── */
+.er-row--clickable {
+  cursor: pointer;
+}
+.er-row--clickable:hover {
+  filter: brightness(0.97);
+}
+
 /* ── Fila de detalle ─────────────────────────────────────────────────────── */
 .er-detail-row > td {
   padding: 0 !important;

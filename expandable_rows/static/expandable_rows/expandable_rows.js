@@ -32,6 +32,18 @@ function erBuildCards(cards) {
   return html;
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.er-expand-btn[data-expand-on-click="true"]').forEach(function(btn) {
+    var tr = btn.closest('tr');
+    if (!tr) return;
+    tr.classList.add('er-row--clickable');
+    tr.addEventListener('click', function(e) {
+      if (e.target.closest('a, input, button')) return;
+      erToggle(btn);
+    });
+  });
+});
+
 function erToggle(btn) {
   var tr   = btn.closest('tr');
   var icon = btn.querySelector('.material-symbols-outlined');

@@ -8,6 +8,8 @@ from .fields import ErCard
 
 class ExpandableRowMixin:
 
+    expand_on_click = False
+
     class Media:
         css = {"all": ("expandable_rows/expandable_rows.css",)}
         js = ("expandable_rows/expandable_rows.js",)
@@ -47,12 +49,15 @@ class ExpandableRowMixin:
     def expand_detail(self, obj):
         cards = self.expandable_row_cards(obj)
         data = json.dumps([c.to_dict() for c in cards], ensure_ascii=False)
+        expand_on_click = 'true' if getattr(self, 'expand_on_click', False) else 'false'
         return format_html(
             '<button type="button" class="er-expand-btn" data-cards=\'{data}\' '
+            'data-expand-on-click="{expand_on_click}" '
             'onclick="erToggle(this);event.stopPropagation();" title="Ver detalle">'
             '<span class="material-symbols-outlined">expand_more</span>'
             '</button>',
             data=data,
+            expand_on_click=expand_on_click,
         )
 
     expand_detail.short_description = ''  # type: ignore
